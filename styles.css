@@ -1,108 +1,71 @@
-/* styles.css */
+/* styles.css - Fase 5 UI Refresh */
 
 /* 1. Variáveis de Cores */
 :root {
-    --bg-color: #f4f7f9;
-    --text-color: #212529;
-    --header-bg: #ffffff;
-    --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    --textarea-bg: #ffffff;
-    --textarea-border: #dce1e6;
-    --textarea-focus-border: #007aff;
+    --bg-color: #ffffff;
+    --text-color: #1a1a1a;
+    --secondary-text-color: #666666;
+    --border-color: #e5e5e5;
+    --textarea-bg: #f9f9f9;
+    --textarea-text: #1a1a1a;
     --button-bg: #007aff;
     --button-text: #ffffff;
     --button-hover-bg: #005ecb;
-    --readonly-bg: #e9ecef;
-    --feedback-color: #007aff;
+    --button-secondary-bg: #e9ecef;
+    --button-secondary-text: #333;
+    --button-secondary-hover-bg: #dce1e6;
+    --highlight-bg: rgba(255, 159, 67, 0.3);
 }
 
 [data-theme='dark'] {
-    --bg-color: #1a1a1a;
-    --text-color: #f0f0f0;
-    --header-bg: #242424;
-    --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    --textarea-bg: #2c2c2c;
-    --textarea-border: #444;
-    --textarea-focus-border: #007aff;
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --secondary-text-color: #999999;
+    --border-color: #333333;
+    --textarea-bg: #1e1e1e;
+    --textarea-text: #e0e0e0;
     --button-bg: #007aff;
     --button-text: #ffffff;
     --button-hover-bg: #005ecb;
-    --readonly-bg: #3a3a3a;
+    --button-secondary-bg: #333333;
+    --button-secondary-text: #e0e0e0;
+    --button-secondary-hover-bg: #444444;
+    --highlight-bg: rgba(255, 159, 67, 0.4);
 }
 
-/* 2. Estilos Globais e Reset */
+/* 2. Estilos Globais */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
     margin: 0;
-    padding: 0;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-    max-width: 900px;
-    margin: 2rem auto;
+    max-width: 1200px;
+    margin: 1.5rem auto;
     padding: 0 1.5rem;
 }
 
 /* 3. Cabeçalho */
 header {
-    background-color: var(--header-bg);
     padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--textarea-border);
-    box-shadow: var(--header-shadow);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .header-content {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    width: 100%;
-    max-width: 1200px; /* Aumentar a largura máxima */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo-area h1 {
     margin: 0;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 600;
-}
-
-nav {
-    display: flex;
-    gap: 1rem;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: background-color 0.2s;
-}
-
-nav a:hover {
-    background-color: var(--readonly-bg);
-}
-
-nav a.active {
-    background-color: var(--button-bg);
-    color: var(--button-text);
-}
-
-header p {
-    margin: 1rem 0 0;
-    font-size: 1.1rem;
-    color: #6c757d;
-    text-align: center;
 }
 
 #theme-toggle {
@@ -110,113 +73,120 @@ header p {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 50%;
-    line-height: 0;
-    transition: background-color 0.2s;
+    color: var(--text-color);
 }
 
-#theme-toggle:hover {
-    background-color: var(--readonly-bg);
-}
-
-/* 4. Áreas de Texto */
-.textarea-container {
+/* 4. Layout Principal (Grid) */
+.text-area-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
     margin-bottom: 1.5rem;
 }
 
-label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
+.text-area-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-textarea {
+/* 5. Áreas de Texto e Camada de Destaque */
+textarea, #input-highlight-layer {
     width: 100%;
-    padding: 0.8rem;
+    height: 400px;
+    padding: 1rem;
     font-family: "SF Mono", "Fira Code", "Courier New", monospace;
     font-size: 1rem;
-    border: 1px solid var(--textarea-border);
-    border-radius: 8px;
-    background-color: var(--textarea-bg);
-    color: var(--text-color);
+    line-height: 1.6;
     box-sizing: border-box;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    resize: vertical;
+    border: none;
+    background-color: transparent;
+    color: var(--textarea-text);
+    resize: none; /* Desabilitado para manter o layout consistente */
 }
 
 textarea:focus {
     outline: none;
-    border-color: var(--textarea-focus-border);
-    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.25);
+}
+
+#input-highlight-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none; /* Permite cliques através da camada */
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: transparent; /* O texto em si é invisível */
+}
+
+#inputText {
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
 }
 
 #outputText {
-    background-color: var(--readonly-bg);
-    cursor: default;
+    background-color: var(--textarea-bg);
 }
 
-/* 5. Botões */
-.actions {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    position: relative; /* Para o feedback */
+.highlight {
+    background-color: var(--highlight-bg);
+    border-radius: 3px;
 }
 
-button {
+/* 6. Barra de Ferramentas e Contadores */
+.toolbar {
+    padding: 0.5rem 1rem;
+    background-color: var(--textarea-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+.counters {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--secondary-text-color);
+}
+
+/* 7. Botões de Ação */
+.main-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.action-btn {
     font-size: 1rem;
     font-weight: 500;
-    color: var(--button-text);
-    background-color: var(--button-bg);
     border: none;
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
+    background-color: var(--button-bg);
+    color: var(--button-text);
 }
 
-button:hover {
+.action-btn:hover {
     background-color: var(--button-hover-bg);
 }
 
-button:active {
-    transform: scale(0.98);
+.action-btn.secondary {
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
 }
 
-/* Feedback de "Copiado!" (Tarefa 2.3) */
-#copyBtn::after {
-    content: 'Copiado!';
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--feedback-color);
-    color: var(--button-text);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
+.action-btn.secondary:hover {
+    background-color: var(--button-secondary-hover-bg);
 }
 
-#copyBtn.copied::after {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* 6. Layout Responsivo */
-@media (max-width: 768px) {
-    .container {
-        margin: 1rem auto;
-        padding: 0 1rem;
-    }
-
-    header h1 {
-        font-size: 1.5rem;
-    }
-
-    header p {
-        font-size: 1rem;
+/* 8. Responsividade */
+@media (max-width: 900px) {
+    .text-area-wrapper {
+        grid-template-columns: 1fr;
     }
 }

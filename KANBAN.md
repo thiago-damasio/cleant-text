@@ -35,3 +35,14 @@
 | :--- | :--- | :--- |
 | **DONE** | **4.1.** Configurar o *Service Worker* para cache de arquivos. | Arquivo `service-worker.js` que armazena os assets principais para uso offline. |
 | **DONE** | **4.2.** Adicionar o *Web App Manifest*. | Arquivo `manifest.json` com ícones, nome do app e configurações de tela. |
+
+### **Fase 5: Funcionalidades Avançadas de Texto e UI Refresh**
+*Objetivo: Adicionar contadores, destaque de caracteres e um novo botão de reset, além de modernizar a UI.*
+
+| Status | Tarefa | Entregável |
+| :--- | :--- | :--- |
+| **DONE** | **5.1.** Reestruturar o HTML para a nova UI. | `index.html` atualizado com áreas para contadores e novos botões, inspirado em cleanpaste.org. |
+| **DONE** | **5.2.** Implementar contadores de palavras e caracteres. | Lógica em `scripts.js` que atualiza os contadores em tempo real para o texto de entrada e de saída. |
+| **DONE** | **5.3.** Implementar o botão "Clean All / Reset". | Novo botão no `index.html` e lógica em `scripts.js` para limpar todas as áreas de texto e contadores. |
+| **DONE** | **5.4.** Implementar destaque de caracteres invisíveis. | Lógica em `scripts.js` para analisar o texto de entrada e aplicar um destaque visual (ex: background sutil) nos caracteres ocultos. |
+| **DONE** | **5.5.** Reestilizar a aplicação com base na nova UI. | `styles.css` totalmente atualizado para refletir o design inspirado em cleanpaste.org, incluindo os novos elementos. |

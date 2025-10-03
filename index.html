@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,31 +13,44 @@
             <div class="logo-area">
                 <h1>Clean Text</h1>
             </div>
-            <nav>
-                <a href="#" class="active">Clean Text</a>
-                <!-- <a href="#">Future Tool</a> -->
-            </nav>
             <button id="theme-toggle" title="Alternar tema">🌙</button>
         </div>
     </header>
-    <main>
-        <div class="container">
-            <div class="textarea-container">
-                <label for="inputText">Texto Original:</label>
-                <textarea id="inputText" placeholder="Cole seu texto aqui..." rows="10"></textarea>
+
+    <main class="container">
+        <div class="text-area-wrapper">
+            <!-- Área de Entrada -->
+            <div class="text-area-container">
+                <div id="input-highlight-layer"></div>
+                <textarea id="inputText" placeholder="Cole seu texto aqui..."></textarea>
+                <div class="toolbar">
+                    <div class="counters">
+                        <span><span id="input-word-count">0</span> palavras</span>
+                        <span><span id="input-char-count">0</span> caracteres</span>
+                    </div>
+                </div>
             </div>
-            <div class="actions">
-                <button id="cleanBtn">Limpar Texto</button>
-            </div>
-            <div class="textarea-container">
-                <label for="outputText">Texto Limpo:</label>
-                <textarea id="outputText" readonly placeholder="O resultado aparecerá aqui..." rows="10"></textarea>
-            </div>
-            <div class="actions">
-                <button id="copyBtn">Copiar Resultado</button>
+
+            <!-- Área de Saída -->
+            <div class="text-area-container">
+                <textarea id="outputText" readonly placeholder="O resultado aparecerá aqui..."></textarea>
+                <div class="toolbar">
+                    <div class="counters">
+                        <span><span id="output-word-count">0</span> palavras</span>
+                        <span><span id="output-char-count">0</span> caracteres</span>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- Barra de Ações Central -->
+        <div class="main-actions">
+            <button id="cleanBtn" class="action-btn">Limpar Texto</button>
+            <button id="copyBtn" class="action-btn">Copiar Resultado</button>
+            <button id="resetBtn" class="action-btn secondary">Limpar Tudo</button>
+        </div>
     </main>
+
     <script src="toolkits/clean-text.js"></script>
     <script src="scripts.js"></script>
 </body>
