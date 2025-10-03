@@ -1,0 +1,23 @@
+{
+  "name": "clean-text",
+  "version": "1.0.0",
+  "description": "Um site de **toolkits web** para utilitários do dia a dia, começando com uma ferramenta de limpeza de texto. O projeto agora é um PWA (Progressive Web App), o que significa que pode ser \"instalado\" no seu dispositivo para acesso rápido e offline.",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiagod-gh/cleant-text.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thiagod-gh/cleant-text/issues"
+  },
+  "homepage": "https://github.com/thiagod-gh/cleant-text#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}

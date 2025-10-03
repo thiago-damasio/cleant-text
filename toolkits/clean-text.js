@@ -16,3 +16,5 @@ function cleanText(text) {
 
     return cleanedText;
 }
+
+module.exports = cleanText;
