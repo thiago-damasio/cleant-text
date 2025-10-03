@@ -41,8 +41,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const invisibleCharRegex = /[​-‍﻿ ]/g;
 
     function highlightInvisibleChars(text) {
-        const highlightedHtml = text.replace(invisibleCharRegex, '<span class="highlight">$&</span>');
-        highlightLayer.innerHTML = highlightedHtml + '\n'; // Adiciona nova linha para garantir a altura
+        // Limpa o conteúdo anterior de forma segura
+        highlightLayer.innerHTML = '';
+
+        // Se o texto for vazio, não há mais nada a fazer
+        if (!text) return;
+
+        const fragments = text.split('');
+        const fragment = document.createDocumentFragment();
+
+        fragments.forEach(char => {
+            if (invisibleCharRegex.test(char)) {
+                const span = document.createElement('span');
+                span.className = 'highlight';
+                span.textContent = char;
+                fragment.appendChild(span);
+            } else {
+                fragment.appendChild(document.createTextNode(char));
+            }
+        });
+
+        fragment.appendChild(document.createTextNode('\n')); // Garante a altura
+        highlightLayer.appendChild(fragment);
     }
 
     // --- Lógica de Limpeza ---
